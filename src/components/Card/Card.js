@@ -22,18 +22,20 @@ export class card extends Component {
         <div className="card-content">
           <div className="card-title">
               <div className="card-name">{title}</div>
-              <Tag icon={<CheckCircleOutlined />} className="completed-intervals" color="magenta">{noOfTimeCompleted}/{maxNoOfTime}</Tag>
+              {/* <Tag icon={<CheckCircleOutlined />} className="completed-intervals" color="magenta">{noOfTimeCompleted}/{maxNoOfTime}</Tag> */}
               <Tag className="interval-period" color="#87d068">{intervalPeriod} Minutes</Tag>
           </div>
           <div>
             <Progress 
                 type="circle"
-                percent={percentage}
                 width={70}
                 strokeColor={{
                 "0%": "#ffc800",
                 "100%": "#ffc800",
-            }}/>
+                }}
+                percent={noOfTimeCompleted/maxNoOfTime*100}
+                format={() => `${noOfTimeCompleted}/${maxNoOfTime}`}
+            />
           </div>
         </div>
         <Progress
@@ -41,7 +43,7 @@ export class card extends Component {
             "0%": "#ffc800",
             "100%": "#ffc800",
           }}
-          percent={percentage}
+          percent={100}
           showInfo={false}
         />
       </Col>
