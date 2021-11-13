@@ -97,6 +97,7 @@ const AddNew = ({ id, setReminderPage }) => {
               name: reminder,
               noOfTime,
               intervalPeriod,
+              completedCycle: 0,
             };
           }
           return item;
@@ -107,6 +108,7 @@ const AddNew = ({ id, setReminderPage }) => {
           name: reminder,
           noOfTime,
           intervalPeriod,
+          completedCycle: 0,
         });
       }
       window.localStorage.setItem("cuckooReminder", JSON.stringify(reminders));
