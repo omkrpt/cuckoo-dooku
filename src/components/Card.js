@@ -1,11 +1,15 @@
 import { Col, Progress } from 'antd'
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export class card extends Component {
     render() {
-        const {title = "Drink Water", percentage} = this.props;
+        const {title = "Drink Water", percentage, id} = this.props;
         return (
             <Col span={24} className="card">
+                <Link to={{
+                    pathname:`${id}`
+                }} >
                 <div className="card-content">
                     <div>
                         {title}
@@ -22,6 +26,7 @@ export class card extends Component {
                     percent={99.9}
                     showInfo={false}
                 />
+                </Link>
             </Col>
         )
     }
