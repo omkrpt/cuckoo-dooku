@@ -2,15 +2,7 @@ import { Col, Input, InputNumber, Radio, Row, Slider, Select } from 'antd'
 import React, { Component } from 'react'
 const {Option} = Select
 
-export class TimerConfig extends Component {
-
-    constructor(props) {
-        super(props)
-    
-    }
-}
-    
-
+export class TimerConfig extends Component {    
 
     render() {
         return (
