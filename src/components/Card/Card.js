@@ -12,7 +12,6 @@ export class card extends Component {
       noOfTimeCompleted=0,
       intervalPeriod,
     } = this.props;
-    const percentage = noOfTimeCompleted/maxNoOfTime;
     return (
       <Col
         span={24}
@@ -34,7 +33,7 @@ export class card extends Component {
                 "100%": "#ffc800",
                 }}
                 percent={noOfTimeCompleted/maxNoOfTime*100}
-                format={() => `${noOfTimeCompleted}/${maxNoOfTime}`}
+                format={() => maxNoOfTime === "always" ? "Ꝏ" : `${noOfTimeCompleted}/${maxNoOfTime}`}
             />
           </div>
         </div>
