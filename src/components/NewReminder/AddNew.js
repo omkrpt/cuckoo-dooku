@@ -1,21 +1,91 @@
-import React from "react";
-import { Row, Button, Col, Progress } from "antd";
+import React, { useEffect, useState, useMemo } from "react";
+import { Row, Button, Col, Input } from "antd";
 import AddNewItem from "./AddNewItem";
+import { DeleteOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import "./style.css";
 
-const AddNew = ({}) => {
-  const handleOnItemChange = () => {};
+const AddNew = ({ id, setReminderPage }) => {
+  const [reminder, setReminder] = useState();
+  const [noOfTime, setNoOfTime] = useState();
+  const [intervalPeriod, setIntervalPeriod] = useState();
+  const mode = (id && "EDIT") || "CREATE";
+  // const [reminderOptions, setReminderOptions] = useState([]);
 
-  const addNewTime = () => {};
+  const isSaveDisabled = useMemo(() => {
+    return !reminder || !noOfTime || !intervalPeriod;
+  }, [reminder, noOfTime, intervalPeriod]);
 
-  const reminderOptions = () => {
-    const returnArray = [];
-    returnArray.push({ text: "Water Reminder", value: "water" });
-    returnArray.push({ text: "Blinking Reminder", value: "blinking" });
-    returnArray.push({ text: "Stretch Reminder", value: "stretch" });
-    returnArray.push({ text: "Posture Reminder", value: "posture" });
-    returnArray.push({ text: "Custom", value: "custom" });
-    return returnArray;
+  useEffect(() => {
+    const cuckooReminder = window.localStorage.getItem("cuckooReminder");
+    const reminders = cuckooReminder && JSON.parse(cuckooReminder);
+    if (reminders && Array.isArray(reminders)) {
+      const currentItem = reminders.find(({ id: itemId }) => itemId === id);
+      if (currentItem) {
+        const {
+          name: name_,
+          noOfTime: noOfTime_,
+          intervalPeriod: intervalPeriod_,
+        } = currentItem;
+        setReminder(name_);
+        setNoOfTime(noOfTime_);
+        setIntervalPeriod(intervalPeriod_);
+      }
+    }
+  }, [id]);
+
+  const handleOnItemChange = (type, value) => {
+    switch (type) {
+      case "remindOn":
+        {
+          setReminder(value);
+        }
+        break;
+      case "noOfTime":
+        {
+          setNoOfTime(value);
+        }
+        break;
+      case "intervalPeriod":
+        {
+          setIntervalPeriod(value);
+        }
+        break;
+    }
+  };
+
+  const addNewReminder = () => {
+    console.log(reminder, noOfTime, intervalPeriod);
+    const cuckooReminder = window.localStorage.getItem("cuckooReminder");
+    let reminders = cuckooReminder ? JSON.parse(cuckooReminder) : [];
+    if (reminders && Array.isArray(reminders)) {
+      if (mode === "EDIT") {
+        reminders = reminders.map((item) => {
+          if (item.id === id) {
+            return {
+              id,
+              name: reminder,
+              noOfTime,
+              intervalPeriod,
+            };
+          }
+          return item;
+        });
+      } else {
+        reminders.push({
+          id: Math.random(),
+          name: reminder,
+          noOfTime,
+          intervalPeriod,
+        });
+      }
+      window.localStorage.setItem("cuckooReminder", JSON.stringify(reminders));
+      window.dispatchEvent(new Event("storage"));
+    }
+    goBack();
+  };
+
+  const goBack = () => {
+    setReminderPage({});
   };
 
   const noOfTimeOptions = () => {
@@ -40,31 +110,51 @@ const AddNew = ({}) => {
   return (
     <Row align="center">
       <Col className="add-new-conatiner">
+        <Row align="center" justify="space-between">
+          <Button
+            className="back-button"
+            type="primary"
+            onClick={() => goBack()}
+            icon={<ArrowLeftOutlined />}
+          >
+            Back
+          </Button>
+          <Button
+            className="back-button"
+            type="danger"
+            onClick={() => goBack()}
+            icon={<DeleteOutlined />}
+          >
+            Delete
+          </Button>
+        </Row>
         <Col className="add-new-item-conatiner">
           <AddNewItem
-            items={reminderOptions()}
-            value={undefined}
+            items={[]}
+            value={reminder}
             title="Remind me to:"
             onChange={(value) => handleOnItemChange("remindOn", value)}
+            autoComplete
           ></AddNewItem>
           <AddNewItem
             items={noOfTimeOptions()}
-            value={undefined}
+            value={noOfTime}
             title="How many times?"
             onChange={(value) => handleOnItemChange("noOfTime", value)}
           ></AddNewItem>
           <AddNewItem
-            value={undefined}
+            value={intervalPeriod}
             title="Interval period?"
             items={intervalPeriodOptions()}
             onChange={(value) => handleOnItemChange("intervalPeriod", value)}
           ></AddNewItem>
           <Button
+            disabled={isSaveDisabled}
             className="add-new-button"
             type="primary"
-            onClick={() => addNewTime({})}
+            onClick={() => addNewReminder()}
           >
-            Add Cuckoo
+            {`${mode === "EDIT" ? "Update" : "Add"} Cuckoo`}
           </Button>
         </Col>
       </Col>
