@@ -8,6 +8,7 @@ export class TimerConfig extends Component {
         super(props)
     
     }
+}
     
 
 
