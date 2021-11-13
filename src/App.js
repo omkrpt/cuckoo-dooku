@@ -24,16 +24,6 @@ function App() {
         ) : (
           <CardListing setReminderPage={setReminderPage} />
         )}
-
-        {/* <Button
-        type="primary"
-        onClick={() => createAlarm({ name: alarmName, period: 0.1 })}
-      >
-        Start
-      </Button>
-      <Button type="primary" onClick={() => cancelAlarm(alarmName)}>
-        Clear
-      </Button> */}
       </div>
     </div>
   );

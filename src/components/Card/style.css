@@ -1,7 +1,7 @@
 
 .card{
     box-shadow: 1px 1px 12px -6px #888888;;
-    border-radius: 5px;
+    border-radius: 10px;
     position: relative;
     padding: 20px;
     padding-bottom: 0px;
@@ -12,6 +12,18 @@
     justify-content: space-between;
     font-size: 16px;
     color: initial;
+}
+
+.card .card-content .card-title .card-name{
+    color: rgb(9, 30, 66);
+    font-weight: 600;
+    text-align: left;
+    font-size: 24px;
+}
+
+.completed-intervals, .interval-period{
+    font-size: 16px;
+    padding: 5px;
 }
 
 .card .ant-progress-line{
