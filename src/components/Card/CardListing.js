@@ -1,35 +1,53 @@
-import { Row } from 'antd'
-import React, { Component } from 'react'
-import Card from './Card'
+import { Row } from "antd";
+import React, { useEffect, useState, useMemo } from "react";
+import Card from "./Card";
 import "./style.css";
 
-export class cardListing extends Component {
-    render() {
-        const cards = [
-            {
-                title: "Drinking Water", 
-                percentage: 75,
-                id:1,
-            },
-            {
-                title: "Stretching", 
-                percentage: 75,
-                id:2
-            },
-            {
-                title: "Relax", 
-                percentage: 75,
-                id:3
-            },
-        ]
-        return (
-            <div className="listing">
-                <Row span={24}>
-                    {cards.map((props) => <Card {...props} />)}
-                </Row>
-            </div>
-        )
-    }
-}
+const CardListing = ({ setReminderPage }) => {
+  const [reminders, setReminders] = useState([]);
 
-export default cardListing
+  const loadFromStorage = ({ isInit }) => {
+    try {
+      const cuckooReminder = window.localStorage.getItem("cuckooReminder");
+      const reminders = JSON.parse(cuckooReminder);
+      if (reminders && Array.isArray(reminders)) {
+        setReminders(reminders);
+        setReminderPage({ show: false });
+      } else {
+        if (isInit) setReminderPage({ show: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadFromStorage({ isInit: true });
+    window.addEventListener("storage", loadFromStorage);
+    return () => {
+      window.removeEventListener("storage", loadFromStorage);
+    };
+  }, []);
+
+  const cards = useMemo(
+    () =>
+      reminders.map(({ name, id }) => ({
+        title: name,
+        percentage: 75,
+        id: id,
+      })),
+    [reminders]
+  );
+
+  return (
+    <div className="listing">
+      <Row span={24}>
+        {React.Children.toArray(
+          cards.map((props) => <Card {...props} setReminderPage={setReminderPage} />)
+        )}
+      </Row>
+    </div>
+  );
+};
+
+export default CardListing;

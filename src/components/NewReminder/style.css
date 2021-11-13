@@ -1,7 +1,7 @@
 .add-new-conatiner{
     display: flex;
     flex-direction: column;
-    gap:36px;
+    gap:16px;
     width: 100%;
 }
 
@@ -33,4 +33,14 @@
     color: initial;
     border-radius: 10px;
     height: 40px;
+}
+
+
+.back-button, .back-button:hover{
+    border-radius: 10px;
+    height: 40px;
+    font-size: 16px;
+    border-color: #dedcdc;
+    background: #dedcdc;
+    color: initial;
 }

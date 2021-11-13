@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import { Row, Button } from "antd";
@@ -9,22 +10,20 @@ import AddNew from "./components/NewReminder/AddNew";
 // import { createAlarm, cancelAlarm } from "./utils/alarmHandler";
 // const alarmName = "createAlarmTest";
 
-import { Route, Routes } from "react-router";
-import { BrowserRouter } from "react-router-dom";
-
 function App() {
+  const [reminderPage, setReminderPage] = useState({});
+
+  useEffect(() => {}, []);
+
   return (
     <div className="App">
       <div style={{ width: "500px" }}>
         <Row className="header">Count Cuckoo</Row>
-
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<CardListing />}>
-              <Route path=":id" element={<AddNew />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        {reminderPage.show ? (
+          <AddNew id={reminderPage.id} setReminderPage={setReminderPage} />
+        ) : (
+          <CardListing setReminderPage={setReminderPage} />
+        )}
 
         {/* <Button
         type="primary"
