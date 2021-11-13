@@ -1,21 +1,8 @@
 .add-new-conatiner{
-    padding: 32px;
-    width: 500px;
     display: flex;
     flex-direction: column;
     gap:36px;
-}
-
-.add-new-header{
-    font-weight: bold;
-    font-size: 24px;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 10px 10px 37px 0px #c5c3c3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffc800;
+    width: 100%;
 }
 
 .add-new-item-conatiner{

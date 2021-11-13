@@ -40,7 +40,6 @@ const AddNew = ({}) => {
   return (
     <Row align="center">
       <Col className="add-new-conatiner">
-        <Row className="add-new-header">New Cuckoo</Row>
         <Col className="add-new-item-conatiner">
           <AddNewItem
             items={reminderOptions()}

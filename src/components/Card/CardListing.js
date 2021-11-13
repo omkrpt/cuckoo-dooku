@@ -9,18 +9,21 @@ export class cardListing extends Component {
             {
                 title: "Drinking Water", 
                 percentage: 75,
+                id:1,
             },
             {
                 title: "Stretching", 
                 percentage: 75,
+                id:2
             },
             {
                 title: "Relax", 
                 percentage: 75,
+                id:3
             },
         ]
         return (
-            <div className="container">
+            <div className="listing">
                 <Row span={24}>
                     {cards.map((props) => <Card {...props} />)}
                 </Row>
