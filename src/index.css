@@ -13,6 +13,7 @@ code {
 }
 
 html,body{
-  width: 600px;
+  width: 400px;
   height: 600px;
+  overflow: scroll;
 }
