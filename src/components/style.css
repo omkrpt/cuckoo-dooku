@@ -1,0 +1,29 @@
+.container{
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.card{
+    margin: 10px;
+    box-shadow: 1px 1px 12px -6px #888888;;
+    border-radius: 5px;
+    position: relative;
+    padding: 20px;
+}
+
+.card .card-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .ant-progress-outer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 16px;
+}
+
+.card .ant-progress-line{
+    position: unset;
+}
