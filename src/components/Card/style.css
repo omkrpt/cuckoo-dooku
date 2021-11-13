@@ -1,0 +1,51 @@
+
+.card{
+    box-shadow: 1px 1px 12px -6px #888888;;
+    border-radius: 5px;
+    position: relative;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.card .card-content{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: initial;
+}
+
+.card .ant-progress-line{
+    position: unset;
+}
+
+.card .ant-progress-outer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.card .ant-progress-inner {
+    display: block;
+}
+
+.config .ant-col-24{
+    margin-top: 34px;
+}
+
+.config #activity-name{
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.config .label{
+    color: rgb(9, 30, 66);
+    font-weight: 600;
+    text-align: left;
+}
+
+.listing{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 36px;
+    gap: 36px;
+}
