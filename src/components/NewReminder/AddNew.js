@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Row, Button, Col, Input } from "antd";
+import { Row, Button, Col, notification } from "antd";
 import AddNewItem from "./AddNewItem";
 import { DeleteOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import { createAlarm, cancelAlarm } from "../../utils/alarmHandler";
 import "./style.css";
 
 const AddNew = ({ id, setReminderPage }) => {
@@ -53,16 +54,46 @@ const AddNew = ({ id, setReminderPage }) => {
     }
   };
 
+  const addNewAlarm = (id) => {
+    if (id) {
+      createAlarm({
+        name: `${id}`,
+        period: 0.1,
+        title: reminder,
+        message: `This reminder for every ${intervalPeriod} mintue's`,
+      });
+    }
+  };
+
+  const deleteAlarm = () => {
+    if (id) {
+      cancelAlarm(`${id}`);
+      const cuckooReminder = window.localStorage.getItem("cuckooReminder");
+      let reminders = cuckooReminder ? JSON.parse(cuckooReminder) : [];
+      if (reminders && Array.isArray(reminders)) {
+        reminders = reminders.filter((item) => item.id !== id);
+      }
+      window.localStorage.setItem("cuckooReminder", JSON.stringify(reminders));
+      window.dispatchEvent(new Event("storage"));
+      notification.success({
+        key: new Date(),
+        message: "Cuckoo deleted successfully.",
+      });
+      goBack();
+    }
+  };
+
   const addNewReminder = () => {
     console.log(reminder, noOfTime, intervalPeriod);
     const cuckooReminder = window.localStorage.getItem("cuckooReminder");
     let reminders = cuckooReminder ? JSON.parse(cuckooReminder) : [];
+    const uniqueId = id || Math.random();
     if (reminders && Array.isArray(reminders)) {
       if (mode === "EDIT") {
         reminders = reminders.map((item) => {
-          if (item.id === id) {
+          if (item.id === uniqueId) {
             return {
-              id,
+              id: uniqueId,
               name: reminder,
               noOfTime,
               intervalPeriod,
@@ -72,7 +103,7 @@ const AddNew = ({ id, setReminderPage }) => {
         });
       } else {
         reminders.push({
-          id: Math.random(),
+          id: uniqueId,
           name: reminder,
           noOfTime,
           intervalPeriod,
@@ -80,6 +111,13 @@ const AddNew = ({ id, setReminderPage }) => {
       }
       window.localStorage.setItem("cuckooReminder", JSON.stringify(reminders));
       window.dispatchEvent(new Event("storage"));
+      addNewAlarm(uniqueId);
+      notification.success({
+        key: new Date(),
+        message: `Cuckoo ${
+          mode === "EDIT" ? "updated" : "created"
+        } successfully.`,
+      });
     }
     goBack();
   };
@@ -119,14 +157,16 @@ const AddNew = ({ id, setReminderPage }) => {
           >
             Back
           </Button>
-          <Button
-            className="back-button"
-            type="danger"
-            onClick={() => goBack()}
-            icon={<DeleteOutlined />}
-          >
-            Delete
-          </Button>
+          {mode === "EDIT" && (
+            <Button
+              className="back-button"
+              type="danger"
+              onClick={() => deleteAlarm()}
+              icon={<DeleteOutlined />}
+            >
+              Delete
+            </Button>
+          )}
         </Row>
         <Col className="add-new-item-conatiner">
           <AddNewItem
