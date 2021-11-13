@@ -18,11 +18,20 @@ chrome.alarms.onAlarm.addListener((alarm) => {
       if (reminders && Array.isArray(reminders)) {
         reminders = reminders.map((item) => {
           if (`${item.id}` === alarmName) {
+            const completedCycle = !isNaN(item.completedCycle)
+              ? item.completedCycle + 1
+              : 0;
+
+            // Clear alarm once frequency cycle complete
+            if (completedCycle === item.noOfTime) {
+              chrome.storage.sync.remove(alarmName, function () {
+                chrome.alarms.clear(alarmName);
+              });
+            }
+
             return {
               ...item,
-              completedCycle: !isNaN(item.completedCycle)
-                ? item.completedCycle + 1
-                : 0,
+              completedCycle,
             };
           }
           return item;

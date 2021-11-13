@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Row, Button, Col, notification } from "antd";
+import { Row, Button, Col, notification, Switch } from "antd";
 import AddNewItem from "./AddNewItem";
 import { DeleteOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { createAlarm, cancelAlarm } from "../../utils/alarmHandler";
@@ -9,6 +9,7 @@ const AddNew = ({ id, setReminderPage }) => {
   const [reminder, setReminder] = useState();
   const [noOfTime, setNoOfTime] = useState();
   const [intervalPeriod, setIntervalPeriod] = useState();
+  const [isSnooze, setIsSnooze] = useState(false);
   const mode = (id && "EDIT") || "CREATE";
   // const [reminderOptions, setReminderOptions] = useState([]);
 
@@ -26,10 +27,12 @@ const AddNew = ({ id, setReminderPage }) => {
           name: name_,
           noOfTime: noOfTime_,
           intervalPeriod: intervalPeriod_,
+          isSnooze: isSnooze_,
         } = currentItem;
         setReminder(name_);
         setNoOfTime(noOfTime_);
         setIntervalPeriod(intervalPeriod_);
+        setIsSnooze(isSnooze_);
       }
     }
   }, [id]);
@@ -49,6 +52,11 @@ const AddNew = ({ id, setReminderPage }) => {
       case "intervalPeriod":
         {
           setIntervalPeriod(value);
+        }
+        break;
+      case "snooze":
+        {
+          setIsSnooze(value);
         }
         break;
     }
@@ -92,28 +100,33 @@ const AddNew = ({ id, setReminderPage }) => {
       if (mode === "EDIT") {
         reminders = reminders.map((item) => {
           if (item.id === uniqueId) {
+            cancelAlarm(`${uniqueId}`);
             return {
               id: uniqueId,
               name: reminder,
               noOfTime,
               intervalPeriod,
               completedCycle: 0,
+              isSnooze,
             };
           }
           return item;
         });
       } else {
-        reminders.push({
+        reminders.unshift({
           id: uniqueId,
           name: reminder,
           noOfTime,
           intervalPeriod,
           completedCycle: 0,
+          isSnooze,
         });
       }
       window.localStorage.setItem("cuckooReminder", JSON.stringify(reminders));
       window.dispatchEvent(new Event("storage"));
-      addNewAlarm(uniqueId);
+      if (!isSnooze) {
+        addNewAlarm(uniqueId);
+      }
       notification.success({
         key: new Date(),
         message: `Cuckoo ${
@@ -131,7 +144,7 @@ const AddNew = ({ id, setReminderPage }) => {
   const noOfTimeOptions = () => {
     const returnArray = [];
     returnArray.push({ text: "Always", value: "always" });
-    for (let index = 1; index <= 10; index++) {
+    for (let index = 1; index <= 100; index++) {
       const text = `${index} ${index === 1 ? "Time" : "Times"}`;
       returnArray.push({ text, value: index });
     }
@@ -190,6 +203,19 @@ const AddNew = ({ id, setReminderPage }) => {
             items={intervalPeriodOptions()}
             onChange={(value) => handleOnItemChange("intervalPeriod", value)}
           ></AddNewItem>
+          <div className="add-new-item-row">
+            <Row
+              align="center"
+              justify="space-between"
+              className="add-new-item-title"
+            >
+              {"Snooze for a while"}
+              <Switch
+                checked={isSnooze}
+                onChange={(value) => handleOnItemChange("snooze", value)}
+              />
+            </Row>
+          </div>
           <Button
             disabled={isSaveDisabled}
             className="add-new-button"
