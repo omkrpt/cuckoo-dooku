@@ -11,5 +11,19 @@
     "16": "logo192.png",
     "48": "logo192.png",
     "128": "logo192.png"
-  }
+  },
+  "permissions": [
+    "alarms",
+    "notifications",
+    "storage",
+    "tabs",
+    "activeTab",
+    "http://*/*", 
+    "https://*/*"
+  ],
+  "content_security_policy": "script-src 'self' 'sha256-fdAfMKZtCTRPKMRznGwonJHC++vCCrQS7XFnVrzSXAE=' 'sha256-YD8w9VLrdvqI5/tFVmpT+1337ly+e/JvPrkRxYZo/w4='; object-src 'self';"
+, "background": 
+{
+    "scripts": ["background.js"]
+}
 }
