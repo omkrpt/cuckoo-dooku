@@ -1,14 +1,22 @@
 /*global chrome*/
 
-function createAlarm({ name, period, delay = 0 }) {
-  chrome.alarms.create(name, {
-    delayInMinutes: delay,
-    periodInMinutes: period,
+function createAlarm({
+  name,
+  period,
+  delay = 0,
+  title = "title",
+  message = "description",
+}) {
+  const msg = JSON.stringify({ title, message });
+  chrome.storage.sync.set({ [name]: msg }, function () {
+    chrome.alarms.create(name, {
+      delayInMinutes: delay,
+      periodInMinutes: period,
+    });
   });
 }
-
 function cancelAlarm(alarmName) {
   chrome.alarms.clear(alarmName);
 }
 
-module.exports = { createAlarm, cancelAlarm };
+export { createAlarm, cancelAlarm };
