@@ -1,7 +1,8 @@
-import { Row } from "antd";
+import { Button } from "antd";
 import React, { useEffect, useState, useMemo } from "react";
 import Card from "./Card";
 import "./style.css";
+import { PlusOutlined } from "@ant-design/icons";
 
 const CardListing = ({ setReminderPage }) => {
   const [reminders, setReminders] = useState([]);
@@ -12,9 +13,6 @@ const CardListing = ({ setReminderPage }) => {
       const reminders = JSON.parse(cuckooReminder);
       if (reminders && Array.isArray(reminders)) {
         setReminders(reminders);
-        setReminderPage({ show: false });
-      } else {
-        if (isInit) setReminderPage({ show: true });
       }
     } catch (error) {
       console.log(error);
@@ -39,13 +37,25 @@ const CardListing = ({ setReminderPage }) => {
     [reminders]
   );
 
+  const onAddNewClick = () => setReminderPage({ show: true });
+
   return (
     <div className="listing">
-      <Row span={24}>
+      <Button
+        className="add-new-cuckoo-button"
+        type="secondary"
+        onClick={() => onAddNewClick()}
+        icon={<PlusOutlined />}
+      >
+        Add New Cuckoo
+      </Button>
+      <div className="list-container">
         {React.Children.toArray(
-          cards.map((props) => <Card {...props} setReminderPage={setReminderPage} />)
+          cards.map((props) => (
+            <Card {...props} setReminderPage={setReminderPage} />
+          ))
         )}
-      </Row>
+      </div>
     </div>
   );
 };

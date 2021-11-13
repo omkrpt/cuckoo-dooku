@@ -49,3 +49,17 @@
     grid-gap: 36px;
     gap: 36px;
 }
+
+.add-new-cuckoo-button,
+.add-new-cuckoo-button:hover{
+    height: 40px;
+    font-size: 16px;
+    border: dashed 1px gray;
+    color: initial;
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
