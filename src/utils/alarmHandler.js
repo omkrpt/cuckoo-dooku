@@ -16,7 +16,9 @@ function createAlarm({
   });
 }
 function cancelAlarm(alarmName) {
-  chrome.alarms.clear(alarmName);
+  chrome.storage.sync.remove(alarmName, function () {
+    chrome.alarms.clear(alarmName);
+  });
 }
 
 export { createAlarm, cancelAlarm };
