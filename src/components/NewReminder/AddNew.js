@@ -58,7 +58,7 @@ const AddNew = ({ id, setReminderPage }) => {
     if (id) {
       createAlarm({
         name: `${id}`,
-        period: 0.1,
+        period: parseFloat(intervalPeriod),
         title: reminder,
         message: `This reminder for every ${intervalPeriod} mintue's`,
       });
