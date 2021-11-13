@@ -21,9 +21,8 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 16px;
 }
 
-.card .ant-progress-line{
-    position: unset;
+.card .ant-progress-inner {
+    display: block;
 }
