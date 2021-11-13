@@ -31,10 +31,12 @@ const CardListing = ({ setReminderPage }) => {
 
   const cards = useMemo(
     () =>
-      reminders.map(({ name, id }) => ({
+      reminders.map(({ name, id, noOfTime, intervalPeriod, completedCycle }) => ({ // Completed Cycle needs to be implemented
         title: name,
-        percentage: 75,
         id: id,
+        noOfTimeCompleted: completedCycle, 
+        maxNoOfTime: noOfTime,
+        intervalPeriod: intervalPeriod,
       })),
     [reminders]
   );
