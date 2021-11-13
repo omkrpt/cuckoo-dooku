@@ -68,7 +68,7 @@ const AddNew = ({ id, setReminderPage }) => {
         name: `${id}`,
         period: 0.1,
         title: reminder,
-        message: `This reminder for every ${intervalPeriod} mintue's`,
+        message: `This reminder for every ${intervalPeriod} minutes`,
       });
     }
   };

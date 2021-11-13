@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import { Row, Button } from "antd";
-import logo from './dooku_logo2.png';
+import logo from './logo_white_wide.png';
 // import Input from "./components/Card/Input";
 
 import CardListing from "./components/Card/CardListing";
