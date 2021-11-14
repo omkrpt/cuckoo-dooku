@@ -185,7 +185,12 @@ const AddNew = ({ id, setReminderPage }) => {
         </Row>
         <Col className="add-new-item-container">
           <AddNewItem
-            items={[]}
+            items={[
+              { value: "Blinking Reminder" },
+              { value: "Water Reminder" },
+              { value: "Stretch Reminder" },
+              { value: "Posture Reminder" },
+            ]}
             value={reminder}
             title="Remind me to:"
             onChange={(value) => handleOnItemChange("remindOn", value)}
@@ -209,7 +214,7 @@ const AddNew = ({ id, setReminderPage }) => {
               justify="space-between"
               className="add-new-item-title"
             >
-              {"Snooze for a while"}
+              {"Disabled for a while"}
               <Switch
                 checked={isSnooze}
                 onChange={(value) => handleOnItemChange("snooze", value)}

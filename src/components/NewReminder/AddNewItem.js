@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Select, AutoComplete } from "antd";
 import "./style.css";
 
@@ -11,7 +11,18 @@ const AddNewItem = ({
   onChange,
   autoComplete = false,
 }) => {
-  const onSearch = () => {};
+  const [autoCompleteItems, setAutoCompleteItems] = useState(items);
+
+  const onSearch = (searchValue) => {
+    const filter = items.filter((item) =>
+      `${item.value}`.toLowerCase().includes(`${searchValue}`.toLowerCase())
+    );
+    if (filter.length) {
+      setAutoCompleteItems(filter);
+    } else {
+      setAutoCompleteItems([{ value: `${searchValue} Reminder` }]);
+    }
+  };
 
   return (
     <div className="add-new-item-row">
@@ -19,7 +30,7 @@ const AddNewItem = ({
       {autoComplete ? (
         <AutoComplete
           value={value}
-          options={items}
+          options={autoCompleteItems}
           style={{
             width: "100%",
           }}
