@@ -9,7 +9,7 @@ export class card extends Component {
       id,
       setReminderPage,
       maxNoOfTime,
-      noOfTimeCompleted=0,
+      noOfTimeCompleted = 0,
       intervalPeriod,
     } = this.props;
     return (
@@ -20,27 +20,35 @@ export class card extends Component {
       >
         <div className="card-content">
           <div className="card-title">
-              <div className="card-name">{title}</div>
-              {/* <Tag icon={<CheckCircleOutlined />} className="completed-intervals" color="magenta">{noOfTimeCompleted}/{maxNoOfTime}</Tag> */}
-              <Tag className="interval-period" color="#87d068">{intervalPeriod} Minutes</Tag>
+            <div className="card-name">{title}</div>
+            {/* <Tag icon={<CheckCircleOutlined />} className="completed-intervals" color="magenta">{noOfTimeCompleted}/{maxNoOfTime}</Tag> */}
+            <Tag className="interval-period" color="#53b928">
+              {`${intervalPeriod} ${
+                intervalPeriod === 0 ? "Minute" : "Minutes"
+              }`}
+            </Tag>
           </div>
           <div>
-            <Progress 
-                type="circle"
-                width={70}
-                strokeColor={{
+            <Progress
+              type="circle"
+              width={70}
+              strokeColor={{
                 "0%": "#ffc800",
                 "100%": "#ffc800",
-                }}
-                percent={noOfTimeCompleted/maxNoOfTime*100}
-                format={() => maxNoOfTime === "always" ? "Ꝏ" : `${noOfTimeCompleted}/${maxNoOfTime}`}
+              }}
+              percent={(noOfTimeCompleted / maxNoOfTime) * 100}
+              format={() =>
+                maxNoOfTime === "always"
+                  ? "Ꝏ"
+                  : `${noOfTimeCompleted}/${maxNoOfTime}`
+              }
             />
           </div>
         </div>
         <Progress
           strokeColor={{
-            "0%": "#ffc800",
-            "100%": "#ffc800",
+            "0%": "#fbc800",
+            "100%": "#e86464",
           }}
           percent={100}
           showInfo={false}

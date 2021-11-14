@@ -9,8 +9,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         title,
         message,
         priority: 2,
-        iconUrl:
-          "https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png",
+        iconUrl: "notification_logo.png",
       });
 
       const cuckooReminder = window.localStorage.getItem("cuckooReminder");

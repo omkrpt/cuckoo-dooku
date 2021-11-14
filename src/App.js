@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import { Row, Button } from "antd";
-import logo from './logo_white_wide.png';
+import logo from "./logo_white_wide.png";
 // import Input from "./components/Card/Input";
 
 import CardListing from "./components/Card/CardListing";
@@ -18,8 +18,10 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ width: "400px" }}>
-        <Row className="header"><img src={logo} alt="Logo" /></Row>
+      <Row className="header">
+        <img src={logo} alt="Logo" />
+      </Row>
+      <div className="content-section custom-scroll">
         {reminderPage.show ? (
           <AddNew id={reminderPage.id} setReminderPage={setReminderPage} />
         ) : (

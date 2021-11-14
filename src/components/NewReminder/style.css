@@ -11,7 +11,7 @@
     gap: 32px;
     padding: 32px;
     border-radius: 14px;
-    box-shadow: 10px 10px 37px 0px #c5c3c3;
+    box-shadow: 1px 1px 12px -6px #888888;
 }
 
 .add-new-item-row{
@@ -31,13 +31,11 @@
     border-color:  #ffc800;
     background:  #ffc800;
     color: initial;
-    border-radius: 10px;
     height: 40px;
 }
 
 
 .back-button, .back-button:hover{
-    border-radius: 10px;
     height: 40px;
     font-size: 16px;
     border-color: #dedcdc;
