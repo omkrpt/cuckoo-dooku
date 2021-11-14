@@ -212,7 +212,7 @@ const AddNew = ({ id, setReminderPage }) => {
           ></AddNewItem>
 
           <div className="add-new-item-row">
-            <Row className="add-new-item-title">{"Remind description"}</Row>
+            <Row className="add-new-item-title">{"Remind description:"}</Row>
             <Input
               value={description}
               onChange={(event) =>
