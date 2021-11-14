@@ -10,19 +10,20 @@ const AddNewItem = ({
   items = [],
   onChange,
   autoComplete = false,
+  isError,
 }) => {
   const [autoCompleteItems, setAutoCompleteItems] = useState(items);
 
-  const onSearch = (searchValue) => {
-    const filter = items.filter((item) =>
-      `${item.value}`.toLowerCase().includes(`${searchValue}`.toLowerCase())
-    );
-    if (filter.length) {
-      setAutoCompleteItems(filter);
-    } else {
-      setAutoCompleteItems([{ value: `${searchValue} Reminder` }]);
-    }
-  };
+  // const onSearch = (searchValue) => {
+  //   const filter = items.filter((item) =>
+  //     `${item.value}`.toLowerCase().includes(`${searchValue}`.toLowerCase())
+  //   );
+  //   if (filter.length) {
+  //     setAutoCompleteItems(filter);
+  //   } else {
+  //     setAutoCompleteItems([{ value: `${searchValue} Reminder` }]);
+  //   }
+  // };
 
   return (
     <div className="add-new-item-row">
@@ -36,9 +37,10 @@ const AddNewItem = ({
           }}
           onSelect={onChange}
           onChange={onChange}
-          onSearch={onSearch}
+          // onSearch={onSearch}
           placeholder="Cuckoo Title"
           size="large"
+          className={isError ? "errorBorder" : ""}
         />
       ) : (
         <Select
