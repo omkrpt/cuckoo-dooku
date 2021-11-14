@@ -15,6 +15,7 @@ code {
 html,body{
   width: 450px !important;
   height: auto;
+  background-color: #212121;
 }
 
 .custom-scroll{
