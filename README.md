@@ -33,7 +33,11 @@ On installation you get four pre-set disabled Cuckoos for posture correction, dr
 - Select the "Load Unpacked" option and point to the "build" directory
 - The extension is now installed!
 
-R.I.P. Christopher Lee
+## Authors
+
+- [Vignesh Palanisamy](https://github.com/vigneshpalainsamy)
+- [Raghav Singhal](https://github.com/raghav0108)
+- [Omkar Pote](https://github.com/omkar-pote)
 
 ## License
     MIT License
@@ -57,3 +61,6 @@ R.I.P. Christopher Lee
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+
+
+R.I.P. Christopher Lee. You will always be loved :')
