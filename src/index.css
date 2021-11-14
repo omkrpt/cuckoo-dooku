@@ -13,6 +13,31 @@ code {
 }
 
 html,body{
-  width: 600px;
-  height: 600px;
+  width: 450px !important;
+  height: auto;
+}
+
+.custom-scroll{
+  scrollbar-width: thin;
+  scrollbar-color: #ebecf0 #ffffff;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+  height:8px;
+  background-color:#ebecf0;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #ebecf0;
+}
+
+html::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }

@@ -68,7 +68,7 @@ const AddNew = ({ id, setReminderPage }) => {
         name: `${id}`,
         period: 0.1,
         title: reminder,
-        message: `This reminder for every ${intervalPeriod} mintue's`,
+        message: `This reminder for every ${intervalPeriod} minutes`,
       });
     }
   };
@@ -162,7 +162,7 @@ const AddNew = ({ id, setReminderPage }) => {
 
   return (
     <Row align="center">
-      <Col className="add-new-conatiner">
+      <Col className="add-new-container">
         <Row align="center" justify="space-between">
           <Button
             className="back-button"
@@ -183,7 +183,7 @@ const AddNew = ({ id, setReminderPage }) => {
             </Button>
           )}
         </Row>
-        <Col className="add-new-item-conatiner">
+        <Col className="add-new-item-container">
           <AddNewItem
             items={[]}
             value={reminder}
