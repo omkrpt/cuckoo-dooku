@@ -67,6 +67,7 @@ const AddNew = ({ id, setReminderPage }) => {
       createAlarm({
         name: `${id}`,
         period: 0.1,
+        delay: 0.1,
         title: reminder,
         message: `This reminder for every ${intervalPeriod} minutes`,
       });
