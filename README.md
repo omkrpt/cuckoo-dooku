@@ -9,9 +9,16 @@ Count Dooku's spirit may be trapped in "an ordinary Star Wars themed cuckoo cloc
 > "Hmmm. Great care, we must take." (Yoda, Star Wars: Episode III Revenge of the Sith)
 
 
-## Functionality
+## Functionality and Demo
 
 Cuckoo Dooku reminds you by sending browser notifications. Currently supported only by Google Chrome. Each Cuckoo is a configuration which creates a stream of alerts for the reminder you want, sent at regular intervals.
+
+[Demo video](https://www.youtube.com/embed/6o0_piz2tF0)
+
+<div align="center">
+<img src="./screenshots/screenshot1.png" style="height:600px;width:auto">
+<img src="./screenshots/screenshot2.png" style="height:600px;width:auto">
+</div>
 
 Clicking on any existing Cuckoo or on the Add New Cuckoo button takes you to the add/update menu. It supports the following functionality:
 - Disable/snooze the Cuckoo
@@ -19,7 +26,6 @@ Clicking on any existing Cuckoo or on the Add New Cuckoo button takes you to the
 - Specify the number of times you need to be alerted
 
 On installation you get four pre-set disabled Cuckoos for posture correction, drinking water, resting your eyes and stretching your legs.
-
 
 ## Building locally
 
