@@ -2,7 +2,7 @@
 
 A browser alert extension that helps you develop healthy habits which you often overlook while at work.
 
-[![Logo](./src/logo_red_wide.png)]
+![Logo](./src/logo_red_wide.png)
 
 Count Dooku's spirit may be trapped in "an ordinary Star Wars themed cuckoo clock", but his word must not be taken for granted. Dooku has chosen you as his apprentice and will train you to take breaks, drink water, stretch out and take good care of yourself. Because after all, to truly master the Force you must be the best version of yourself!
 
