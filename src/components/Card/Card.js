@@ -11,7 +11,8 @@ export class card extends Component {
       maxNoOfTime,
       noOfTimeCompleted = 0,
       intervalPeriod,
-      isSnooze
+      isSnooze, 
+      desc,
     } = this.props;
     const snoozeText = maxNoOfTime===noOfTimeCompleted ? "Completed" : isSnooze ? "Disabled" : "Cuckoo Is Ticking";
     const ribbonColor = maxNoOfTime===noOfTimeCompleted ? "grey" :isSnooze ? "volcano" : "green"
@@ -25,8 +26,9 @@ export class card extends Component {
         <div className="card-content">
           <div className="card-title">
             <div className="card-name">{title}</div>
+            <div className="card-desc">{desc}</div>
             {/* <Tag icon={<CheckCircleOutlined />} className="completed-intervals" color="magenta">{noOfTimeCompleted}/{maxNoOfTime}</Tag> */}
-            <Tag className="interval-period" color="#53b928">
+            <Tag className="interval-period" color="geekblue">
               {`${intervalPeriod} ${
                 intervalPeriod === 0 ? "Minute" : "Minutes"
               }`}
