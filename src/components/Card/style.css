@@ -1,15 +1,16 @@
 
 .card{
-    box-shadow: 1px 1px 12px -6px #888888;
+    box-shadow: 1px 1px 12px -6px #000;
     border-radius: 10px;
     position: relative;
     padding:38px 20px 0;
     padding-bottom: 0px;
-    background-color: white;
+    background-color: #333;
 }
 
 .card:hover{
-    box-shadow: 2px 3px 15px -6px #888888;
+    box-shadow: 2px 3px 15px -5px #000;
+    background-color: #383838;
 }
 
 .card .card-content{
@@ -20,7 +21,7 @@
 }
 
 .card .card-content .card-title .card-name{
-    color: rgb(9, 30, 66);
+    color: #EEEEEE;
     font-weight: 600;
     text-align: left;
     font-size: 18px;
@@ -28,9 +29,14 @@
 }
 
 .card .card-content .card-desc{
-    font-size: 14px;
-    color: darkgrey;
+    font-size: 13px;
+    color: #9E9E9E;
     font-style:oblique;
+}
+
+.card .ant-progress-circle .ant-progress-text {
+    color: #EEEEEE;
+    font-size: 15px;
 }
 
 .completed-intervals, .interval-period{
@@ -53,6 +59,12 @@
     display: block;
 }
 
+.card .ant-tag{
+    color: #EEEEEE;
+    background: transparent;
+    font-size: 15px;
+}
+
 .config .ant-col-24{
     margin-top: 34px;
 }
@@ -62,7 +74,7 @@
 }
 
 .config .label{
-    color: rgb(9, 30, 66);
+    color: #fff;
     font-weight: 600;
     text-align: left;
 }
@@ -78,8 +90,9 @@
 .add-new-cuckoo-button:hover{
     height: 40px;
     font-size: 16px;
-    border: dashed 1px gray;
-    color: initial;
+    border: dashed 1px #EEEEEE;
+    color: #EEEEEE;
+    background-color: transparent;
 }
 
 .list-container{

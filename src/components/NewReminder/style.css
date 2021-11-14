@@ -11,7 +11,8 @@
     gap: 16px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 1px 1px 12px -6px #888888;
+    box-shadow: 1px 1px 12px -6px #000;
+    background-color: #333;
 }
 
 .add-new-item-row{
@@ -23,13 +24,14 @@
 .add-new-item-title{
     font-size: 16px;
     font-weight: bold;
+    color: #EEEEEE;
 }
 
 .add-new-button ,.add-new-button:hover{
     font-size: 16px;
     font-weight: bold;
     border:none;
-    background:  #F44336;
+    background:  #D32F2F;
     color: white;
     height: 40px;
 }
@@ -40,11 +42,25 @@
     font-size: 16px;
     border: none;
     border-radius: 5px;
-    background: #fff;
-    box-shadow: 1px 1px 12px -5px #888888;
-    color: initial;
+    background: #333;
+    box-shadow: 1px 1px 12px -5px #000;
+    color: #EEEEEE;
 }
 
 .errorBorder{
     border: 1px solid #fa541c !important;
+}
+
+
+.ant-select-show-search.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    cursor: text;
+    background-color: #212121;
+    color: #EEEEEE;
+    font-size: 15px;
+}
+
+.ant-input {
+    background-color: #212121;
+    color: #EEEEEE;
+    font-size: 15px;
 }
