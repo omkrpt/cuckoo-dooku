@@ -27,6 +27,12 @@
     text-transform: capitalize;
 }
 
+.card .card-content .card-desc{
+    font-size: 14px;
+    color: darkgrey;
+    font-style:oblique;
+}
+
 .completed-intervals, .interval-period{
     font-size: 16px;
     padding: 5px;
