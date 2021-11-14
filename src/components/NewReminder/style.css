@@ -44,3 +44,7 @@
     box-shadow: 1px 1px 12px -5px #888888;
     color: initial;
 }
+
+.errorBorder{
+    border: 1px solid #fa541c !important;
+}
