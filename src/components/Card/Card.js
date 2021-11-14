@@ -1,6 +1,6 @@
-import { Col, Progress, Tag } from "antd";
+import { Badge, Col, Progress, Tag } from "antd";
 import React, { Component } from "react";
-import { CheckCircleOutlined } from "@ant-design/icons";
+// import { CheckCircleOutlined } from "@ant-design/icons";
 
 export class card extends Component {
   render() {
@@ -11,8 +11,12 @@ export class card extends Component {
       maxNoOfTime,
       noOfTimeCompleted = 0,
       intervalPeriod,
+      isSnooze
     } = this.props;
+    const snoozeText = maxNoOfTime===noOfTimeCompleted ? "Completed" : isSnooze ? "Disabled" : "Cuckoo Is Ticking";
+    const ribbonColor = maxNoOfTime===noOfTimeCompleted ? "grey" :isSnooze ? "volcano" : "green"
     return (
+    <Badge.Ribbon text={snoozeText} color={ribbonColor}>
       <Col
         span={24}
         className="card"
@@ -54,6 +58,7 @@ export class card extends Component {
           showInfo={false}
         />
       </Col>
+      </Badge.Ribbon>
     );
   }
 }
