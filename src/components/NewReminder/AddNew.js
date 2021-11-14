@@ -7,7 +7,7 @@ import "./style.css";
 
 const AddNew = ({ id, setReminderPage }) => {
   const [reminder, setReminder] = useState("");
-  const [noOfTime, setNoOfTime] = useState("Always");
+  const [noOfTime, setNoOfTime] = useState("always");
   const [description, setDescription] = useState();
   const [intervalPeriod, setIntervalPeriod] = useState(15);
   const [isSnooze, setIsSnooze] = useState(false);
@@ -177,7 +177,7 @@ const AddNew = ({ id, setReminderPage }) => {
 
   const noOfTimeOptions = () => {
     const returnArray = [];
-    returnArray.push({ text: "Always", value: "always" });
+    returnArray.push({ text: "always", value: "always" });
     for (let index = 1; index <= 20; index++) {
       const text = `${index} ${index === 1 ? "Time" : "Times"}`;
       returnArray.push({ text, value: index });
