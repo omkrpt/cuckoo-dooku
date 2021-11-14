@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
 import { Row } from "antd";
-import logo from "./logo_white_wide.png";
+import logo from "./logo_red_wide.png";
 
 import CardListing from "./components/Card/CardListing";
 import AddNew from "./components/NewReminder/AddNew";
