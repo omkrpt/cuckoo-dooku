@@ -37,7 +37,7 @@ const AddNewItem = ({
           onSelect={onChange}
           onChange={onChange}
           onSearch={onSearch}
-          placeholder="Input here"
+          placeholder="Cuckoo title"
           size="large"
         />
       ) : (

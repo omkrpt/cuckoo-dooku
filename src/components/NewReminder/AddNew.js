@@ -218,7 +218,7 @@ const AddNew = ({ id, setReminderPage }) => {
               onChange={(event) =>
                 handleOnItemChange("description", event.target.value)
               }
-              placeholder="Description"
+              placeholder="Cuckoo description"
               size="large"
             />
           </div>
