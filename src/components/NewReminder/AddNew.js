@@ -8,7 +8,7 @@ import "./style.css";
 const AddNew = ({ id, setReminderPage }) => {
   const [reminder, setReminder] = useState();
   const [noOfTime, setNoOfTime] = useState("Always");
-  const [intervalPeriod, setIntervalPeriod] = useState();
+  const [intervalPeriod, setIntervalPeriod] = useState(15);
   const [isSnooze, setIsSnooze] = useState(false);
   const mode = (id && "EDIT") || "CREATE";
   // const [reminderOptions, setReminderOptions] = useState([]);
@@ -154,10 +154,12 @@ const AddNew = ({ id, setReminderPage }) => {
 
   const intervalPeriodOptions = () => {
     const returnArray = [];
-    for (let index = 1; index <= 60; index++) {
-      const text = `${index} ${index === 1 ? "Minute" : "Minutes"}`;
-      returnArray.push({ text, value: index });
-    }
+    returnArray.push({text: `15 Minutes`, value: 15});
+    returnArray.push({text: `30 Minutes`, value: 30});
+    returnArray.push({text: `45 Minutes`, value: 45});
+    returnArray.push({text: `1 Hour`, value: 60});
+    returnArray.push({text: `2 Hours`, value: 120});
+    returnArray.push({text: `3 Hours`, value: 180});
     return returnArray;
   };
 
