@@ -1,6 +1,6 @@
 # Cuckoo Dooku
 
-A browser alert extension that helps you develop healthy habits which you often overlook while at work.
+A browser alert extension that helps you develop healthy habits which you often overlook while at work. 
 
 ![Logo](./src/logo_red_wide.png)
 
@@ -8,7 +8,16 @@ Count Dooku's spirit may be trapped in "an ordinary Star Wars themed cuckoo cloc
 
 > "Hmmm. Great care, we must take." (Yoda, Star Wars: Episode III Revenge of the Sith)
 
-## Usage
+## Functionality
+
+Cuckoo Dooku reminds you by sending browser notifications. Currently supported only by Google Chrome. Each Cuckoo is a configuration which creates a stream of alerts for the reminder you want, sent at regular intervals.
+
+Clicking on any existing Cuckoo or on the Add New Cuckoo button takes you to the add/update menu. It supports the following functionality:
+- Disable/snooze the Cuckoo
+- Edit and customise the interval between reminders
+- Specify the number of times you need to be alerted
+
+On installation you get four pre-set disabled Cuckoos for posture correction, drinking water, resting your eyes and stretching your legs.
 
 
 ## Building locally
@@ -23,6 +32,8 @@ Count Dooku's spirit may be trapped in "an ordinary Star Wars themed cuckoo cloc
 - Enable Developer mode
 - Select the "Load Unpacked" option and point to the "build" directory
 - The extension is now installed!
+
+R.I.P. Christopher Lee
 
 ## License
     MIT License
