@@ -212,13 +212,13 @@ const AddNew = ({ id, setReminderPage }) => {
           ></AddNewItem>
 
           <div className="add-new-item-row">
-            <Row className="add-new-item-title">{"Remind description:"}</Row>
+            <Row className="add-new-item-title">{"Description:"}</Row>
             <Input
               value={description}
               onChange={(event) =>
                 handleOnItemChange("description", event.target.value)
               }
-              placeholder="Always remember, your focus determines your reality."
+              placeholder="Do or do not, there is no try."
               size="large"
             />
           </div>
