@@ -6,16 +6,17 @@ import { createAlarm, cancelAlarm } from "../../utils/alarmHandler";
 import "./style.css";
 
 const AddNew = ({ id, setReminderPage }) => {
-  const [reminder, setReminder] = useState();
+  const [reminder, setReminder] = useState("");
   const [noOfTime, setNoOfTime] = useState("Always");
   const [description, setDescription] = useState();
   const [intervalPeriod, setIntervalPeriod] = useState(15);
   const [isSnooze, setIsSnooze] = useState(false);
+  const [isError, setIsError] = useState(false);
   const mode = (id && "EDIT") || "CREATE";
 
   const isSaveDisabled = useMemo(() => {
-    return !reminder || !noOfTime || !intervalPeriod;
-  }, [reminder, noOfTime, intervalPeriod]);
+    return !reminder || !noOfTime || !intervalPeriod || isError ;
+  }, [reminder, noOfTime, intervalPeriod, isError]);
 
   useEffect(() => {
     const cuckooReminder = window.localStorage.getItem("cuckooReminder");
@@ -38,6 +39,19 @@ const AddNew = ({ id, setReminderPage }) => {
       }
     }
   }, [id]);
+
+  useEffect(() => {
+    const cuckooReminder = window.localStorage.getItem("cuckooReminder");
+    const reminders = cuckooReminder && JSON.parse(cuckooReminder);
+    if(reminders && Array.isArray(reminders) && mode !== "EDIT" && reminder!==""){
+      console.log(reminder, reminders);
+      const duplicates = reminders.filter((item) => item.name.toLowerCase() === reminder.toLowerCase());
+      console.log(duplicates);
+      setIsError(duplicates.length > 0);
+      // notification.warning({message: "Cuckoo title already exists", key: new Date()});
+      // return;
+    }
+  }, [reminder])
 
   const handleOnItemChange = (type, value) => {
     switch (type) {
@@ -103,6 +117,15 @@ const AddNew = ({ id, setReminderPage }) => {
     console.log(reminder, noOfTime, intervalPeriod);
     const cuckooReminder = window.localStorage.getItem("cuckooReminder");
     let reminders = cuckooReminder ? JSON.parse(cuckooReminder) : [];
+    if(reminders && Array.isArray(reminders) && mode !== "EDIT"){
+      console.log(reminder, reminders);
+      const duplicates = reminders.filter((item) => item.name.toLowerCase() === reminder.toLowerCase());
+      console.log(duplicates)
+      if(duplicates.length > 0){
+        notification.warning({message: "Cuckoo title already exists", key: new Date()});
+        return;
+      }
+    }
     const uniqueId = id || Math.random();
     const desc = description || "";
     if (reminders && Array.isArray(reminders)) {
@@ -199,18 +222,14 @@ const AddNew = ({ id, setReminderPage }) => {
         </Row>
         <Col className="add-new-item-container">
           <AddNewItem
-            items={[
-              { value: "Blinking Reminder" },
-              { value: "Water Reminder" },
-              { value: "Stretch Reminder" },
-              { value: "Posture Reminder" },
-            ]}
+            items={[]}
             value={reminder}
             title="Remind me to:"
             onChange={(value) => handleOnItemChange("remindOn", value)}
             autoComplete
+            isError={isError}
           ></AddNewItem>
-
+          {isError && <div style={{color: "Red", marginLeft: "16px"}}>Cuckoo title exists</div>}
           <div className="add-new-item-row">
             <Row className="add-new-item-title">{"Description:"}</Row>
             <Input
