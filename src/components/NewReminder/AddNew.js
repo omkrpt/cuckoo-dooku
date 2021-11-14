@@ -212,13 +212,13 @@ const AddNew = ({ id, setReminderPage }) => {
           ></AddNewItem>
 
           <div className="add-new-item-row">
-            <Row className="add-new-item-title">{"Remind description:"}</Row>
+            <Row className="add-new-item-title">{"Description:"}</Row>
             <Input
               value={description}
               onChange={(event) =>
                 handleOnItemChange("description", event.target.value)
               }
-              placeholder="Cuckoo description"
+              placeholder="Do or do not, there is no try."
               size="large"
             />
           </div>
@@ -232,7 +232,7 @@ const AddNew = ({ id, setReminderPage }) => {
 
           <AddNewItem
             value={intervalPeriod}
-            title="Interval period?"
+            title="How often?"
             items={intervalPeriodOptions()}
             onChange={(value) => handleOnItemChange("intervalPeriod", value)}
           ></AddNewItem>
@@ -243,7 +243,7 @@ const AddNew = ({ id, setReminderPage }) => {
               justify="space-between"
               className="add-new-item-title"
             >
-              {"Disabled for a while"}
+              {"Disable for a while"}
               <Switch
                 checked={isSnooze}
                 onChange={(value) => handleOnItemChange("snooze", value)}
