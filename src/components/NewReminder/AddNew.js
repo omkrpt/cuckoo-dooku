@@ -87,8 +87,8 @@ const AddNew = ({ id, setReminderPage }) => {
     if (id) {
       createAlarm({
         name: `${id}`,
-        period: 0.1,
-        delay: 0.1,
+        period: parseInt(intervalPeriod),
+        delay: parseInt(intervalPeriod),
         title: reminder,
         message: description || "",
       });
