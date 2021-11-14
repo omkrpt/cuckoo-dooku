@@ -1,0 +1,38 @@
+export default [
+  {
+    id: Math.random(),
+    name: "Sit up straight",
+    desc : "Those without good posture do not deserve the throne. Once more the Sit will rule the galaxy!",
+    noOfTime: "always",
+    intervalPeriod: 20,
+    completedCycle: 0,
+    isSnooze: true,
+  },
+  {
+    id: Math.random(),
+    name: "Hydrate yourself",
+    desc : "Reach out. Feel the Water around you. Have a sip and replenish your vitals.",
+    noOfTime: "always",
+    intervalPeriod: 45,
+    completedCycle: 0,
+    isSnooze: true,
+  },
+  {
+    id: Math.random(),
+    name: "Rest your eyes",
+    desc : "Close them before your vision gets too clouded. Open your mind's eye and you shall see through the lies of the Jedi.",
+    noOfTime: "always",
+    intervalPeriod: 60,
+    completedCycle: 0,
+    isSnooze: true,
+  },
+  {
+    id: Math.random(),
+    name: "Stretch your legs",
+    desc : "Do a quick walk around the room. Or across the Outer Rim of the galaxy. Your path you must decide, young Walker.",
+    noOfTime: "always",
+    intervalPeriod: 20,
+    completedCycle: 0,
+    isSnooze: true,
+  },
+];

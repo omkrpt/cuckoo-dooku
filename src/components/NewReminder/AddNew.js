@@ -218,7 +218,7 @@ const AddNew = ({ id, setReminderPage }) => {
               onChange={(event) =>
                 handleOnItemChange("description", event.target.value)
               }
-              placeholder="Description"
+              placeholder="Always remember, your focus determines your reality."
               size="large"
             />
           </div>
@@ -232,7 +232,7 @@ const AddNew = ({ id, setReminderPage }) => {
 
           <AddNewItem
             value={intervalPeriod}
-            title="Interval period?"
+            title="How often?"
             items={intervalPeriodOptions()}
             onChange={(value) => handleOnItemChange("intervalPeriod", value)}
           ></AddNewItem>
@@ -243,7 +243,7 @@ const AddNew = ({ id, setReminderPage }) => {
               justify="space-between"
               className="add-new-item-title"
             >
-              {"Disabled for a while"}
+              {"Disable for a while"}
               <Switch
                 checked={isSnooze}
                 onChange={(value) => handleOnItemChange("snooze", value)}

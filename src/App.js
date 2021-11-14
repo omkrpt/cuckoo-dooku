@@ -6,7 +6,7 @@ import logo from "./logo_white_wide.png";
 
 import CardListing from "./components/Card/CardListing";
 import AddNew from "./components/NewReminder/AddNew";
-import defaultCuckkos from "../src/utils/defaultCuckkos";
+import defaultCuckoos from "./utils/defaultCuckoos";
 
 function App() {
   const [reminderPage, setReminderPage] = useState({});
@@ -16,7 +16,7 @@ function App() {
     if (!cuckooReminder) {
       window.localStorage.setItem(
         "cuckooReminder",
-        JSON.stringify(defaultCuckkos)
+        JSON.stringify(defaultCuckoos)
       );
       window.dispatchEvent(new Event("storage"));
     }
