@@ -1,12 +1,13 @@
 # Cuckoo Dooku
 
-A browser alert extension that helps you develop healthy habits which you often overlook while at work. 
+A browser extension that helps you develop healthy habits which you often overlook while at work. 
 
 ![Logo](./src/logo_red_wide.png)
 
 Count Dooku's spirit may be trapped in "an ordinary Star Wars themed cuckoo clock", but his word must not be taken for granted. Dooku has chosen you as his apprentice and will train you to take breaks, drink water, stretch out and take good care of yourself. Because after all, to truly master the Force you must be the best version of yourself!
 
 > "Hmmm. Great care, we must take." (Yoda, Star Wars: Episode III Revenge of the Sith)
+
 
 ## Functionality
 
@@ -23,8 +24,10 @@ On installation you get four pre-set disabled Cuckoos for posture correction, dr
 ## Building locally
 
 - Install latest version of [Node.js](https://nodejs.org)
-- To install dependencies `npm install`
+- Clone the repository
+- Install dependencies using `npm install`
 - Run build script using `npm run build`
+
 
 ## Installing on Chrome
 
@@ -33,11 +36,18 @@ On installation you get four pre-set disabled Cuckoos for posture correction, dr
 - Select the "Load Unpacked" option and point to the "build" directory
 - The extension is now installed!
 
-## Authors
 
-- [Vignesh Palanisamy](https://github.com/vigneshpalainsamy)
-- [Raghav Singhal](https://github.com/raghav0108)
-- [Omkar Pote](https://github.com/omkar-pote)
+## Contribute
+
+There's still a lot of things in store for this project:
+- Going live on the Chrome web store
+- User profiles based on Google logins for remote logins
+- Different modes like Work mode, DND mode, Casual mode
+
+Feel free to raise a pull request or get in touch with any of us if you have any ideas. May the Force be with you!
+
+[Vignesh Palanisamy](https://github.com/vigneshpalainsamy), [Raghav Singhal](https://github.com/raghav0108), [Omkar Pote](https://github.com/omkar-pote)
+
 
 ## License
     MIT License
