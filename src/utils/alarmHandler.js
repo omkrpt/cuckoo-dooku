@@ -10,7 +10,7 @@ function createAlarm({
   const msg = JSON.stringify({ title, message });
   chrome.storage.sync.set({ [name]: msg }, function () {
     chrome.alarms.create(name, {
-      delayInMinutes: delay,
+      delayInMinutes: period,
       periodInMinutes: period,
     });
   });
