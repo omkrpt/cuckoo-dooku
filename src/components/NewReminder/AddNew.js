@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Row, Button, Col, notification, Switch } from "antd";
+import { Row, Button, Col, notification, Switch, Input } from "antd";
 import AddNewItem from "./AddNewItem";
 import { DeleteOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { createAlarm, cancelAlarm } from "../../utils/alarmHandler";
@@ -8,10 +8,10 @@ import "./style.css";
 const AddNew = ({ id, setReminderPage }) => {
   const [reminder, setReminder] = useState();
   const [noOfTime, setNoOfTime] = useState("Always");
+  const [description, setDescription] = useState();
   const [intervalPeriod, setIntervalPeriod] = useState(15);
   const [isSnooze, setIsSnooze] = useState(false);
   const mode = (id && "EDIT") || "CREATE";
-  // const [reminderOptions, setReminderOptions] = useState([]);
 
   const isSaveDisabled = useMemo(() => {
     return !reminder || !noOfTime || !intervalPeriod;
@@ -28,11 +28,13 @@ const AddNew = ({ id, setReminderPage }) => {
           noOfTime: noOfTime_,
           intervalPeriod: intervalPeriod_,
           isSnooze: isSnooze_,
+          desc: desc_,
         } = currentItem;
         setReminder(name_);
         setNoOfTime(noOfTime_);
         setIntervalPeriod(intervalPeriod_);
         setIsSnooze(isSnooze_);
+        setDescription(desc_);
       }
     }
   }, [id]);
@@ -59,6 +61,11 @@ const AddNew = ({ id, setReminderPage }) => {
           setIsSnooze(value);
         }
         break;
+      case "description":
+        {
+          setDescription(value);
+        }
+        break;
     }
   };
 
@@ -69,7 +76,7 @@ const AddNew = ({ id, setReminderPage }) => {
         period: 0.1,
         delay: 0.1,
         title: reminder,
-        message: `This reminder for every ${intervalPeriod} minutes`,
+        message: description || "",
       });
     }
   };
@@ -97,6 +104,7 @@ const AddNew = ({ id, setReminderPage }) => {
     const cuckooReminder = window.localStorage.getItem("cuckooReminder");
     let reminders = cuckooReminder ? JSON.parse(cuckooReminder) : [];
     const uniqueId = id || Math.random();
+    const desc = description || "";
     if (reminders && Array.isArray(reminders)) {
       if (mode === "EDIT") {
         reminders = reminders.map((item) => {
@@ -109,6 +117,7 @@ const AddNew = ({ id, setReminderPage }) => {
               intervalPeriod,
               completedCycle: 0,
               isSnooze,
+              desc,
             };
           }
           return item;
@@ -121,6 +130,7 @@ const AddNew = ({ id, setReminderPage }) => {
           intervalPeriod,
           completedCycle: 0,
           isSnooze,
+          desc,
         });
       }
       window.localStorage.setItem("cuckooReminder", JSON.stringify(reminders));
@@ -200,18 +210,33 @@ const AddNew = ({ id, setReminderPage }) => {
             onChange={(value) => handleOnItemChange("remindOn", value)}
             autoComplete
           ></AddNewItem>
+
+          <div className="add-new-item-row">
+            <Row className="add-new-item-title">{"Remind description:"}</Row>
+            <Input
+              value={description}
+              onChange={(event) =>
+                handleOnItemChange("description", event.target.value)
+              }
+              placeholder="Description"
+              size="large"
+            />
+          </div>
+
           <AddNewItem
             items={noOfTimeOptions()}
             value={noOfTime}
             title="How many times?"
             onChange={(value) => handleOnItemChange("noOfTime", value)}
           ></AddNewItem>
+
           <AddNewItem
             value={intervalPeriod}
             title="Interval period?"
             items={intervalPeriodOptions()}
             onChange={(value) => handleOnItemChange("intervalPeriod", value)}
           ></AddNewItem>
+
           <div className="add-new-item-row">
             <Row
               align="center"
@@ -225,6 +250,7 @@ const AddNew = ({ id, setReminderPage }) => {
               />
             </Row>
           </div>
+
           <Button
             disabled={isSaveDisabled}
             className="add-new-button"
