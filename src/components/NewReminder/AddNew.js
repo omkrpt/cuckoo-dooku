@@ -145,7 +145,7 @@ const AddNew = ({ id, setReminderPage }) => {
   const noOfTimeOptions = () => {
     const returnArray = [];
     returnArray.push({ text: "Always", value: "always" });
-    for (let index = 1; index <= 100; index++) {
+    for (let index = 1; index <= 20; index++) {
       const text = `${index} ${index === 1 ? "Time" : "Times"}`;
       returnArray.push({ text, value: index });
     }
@@ -155,6 +155,7 @@ const AddNew = ({ id, setReminderPage }) => {
   const intervalPeriodOptions = () => {
     const returnArray = [];
     returnArray.push({text: `15 Minutes`, value: 15});
+    returnArray.push({text: `20 Minutes`, value: 20});
     returnArray.push({text: `30 Minutes`, value: 30});
     returnArray.push({text: `45 Minutes`, value: 45});
     returnArray.push({text: `1 Hour`, value: 60});
