@@ -9,11 +9,11 @@
   font-weight: bold;
   font-size: 24px;
   padding: 5px;
-  box-shadow: 0px 0px 15px 5px #000;
+  box-shadow: 0px 0px 15px 2px #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #181818;
+  background-color: #050505;
   top:0;
   position:sticky;
   z-index: 99;
