@@ -7,7 +7,7 @@ import "./style.css";
 
 const AddNew = ({ id, setReminderPage }) => {
   const [reminder, setReminder] = useState();
-  const [noOfTime, setNoOfTime] = useState();
+  const [noOfTime, setNoOfTime] = useState("Always");
   const [intervalPeriod, setIntervalPeriod] = useState();
   const [isSnooze, setIsSnooze] = useState(false);
   const mode = (id && "EDIT") || "CREATE";
