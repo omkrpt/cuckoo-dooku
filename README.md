@@ -79,4 +79,4 @@ Feel free to raise a pull request or get in touch with any of us if you have any
     SOFTWARE.
 
 
-R.I.P. Christopher Lee. You will always be loved :')
+R.I.P. Sir Christopher Lee. You will always be loved :')
